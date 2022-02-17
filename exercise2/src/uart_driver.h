@@ -3,7 +3,7 @@
  *
  *  Created on: July 27, 2021
  *      Author: Shyama M. Gandhi
- *
+ *		Correction in MySendByte() proposed by Le Minh Dang  Winter 2022.
  *  ------------------------------------------------------------------------------------------------------------------------------
  *
  *  Overview of uart_driver.h file:
@@ -152,7 +152,7 @@ void MySendByte( u8 Data ) {
 	/*******************************************************/
 
 	//if transmit FIFO empty, use polling, otherwise insert to queue for interrupt method
-	if (XUartPs_IsTransmitEmpty(&UART)){
+	if (XUartPs_IsTransmitEmpty(&UART) && uxQueueMessagesWaiting(xQueue_for_transmit) == 0){
 		XUartPs_WriteReg(XPAR_XUARTPS_0_BASEADDR, XUARTPS_FIFO_OFFSET, Data);
 	}else if(xQueueSend( xQueue_for_transmit, &Data, 0UL) != pdPASS ){
 		xil_printf("Fail to send the data\n");
