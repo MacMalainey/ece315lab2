@@ -117,9 +117,9 @@ void Task_UART_buffer_receive(void *p){
 				//add three lines of code here to check MyIsReceiveData() status, get the data byte using the MyReceiveByte(),
 				//check the status of MyIsTransmitFull() function.
 				//the return value of the MyReceiveByte() function must be stored inside the "pcString" variable.
-				while((MyIsReceiveData() == pdFALSE) || (MyIsTransmitFull() == pdTRUE)) {
-					pcString = MyReceiveByte();
-				}
+				while ((MyIsReceiveData() == pdFALSE) || (MyIsTransmitFull() == pdTRUE)) {};
+				pcString = MyReceiveByte();
+
 				/*******************************************************/
 
 				write_to_queue_value = (char) pcString;	//casted to "char" type.

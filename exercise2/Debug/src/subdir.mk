@@ -7,13 +7,16 @@ LD_SRCS += \
 ../src/lscript.ld 
 
 C_SRCS += \
-../src/exercise2.c 
+../src/exercise2.c \
+../src/initialization.c 
 
 OBJS += \
-./src/exercise2.o 
+./src/exercise2.o \
+./src/initialization.o 
 
 C_DEPS += \
-./src/exercise2.d 
+./src/exercise2.d \
+./src/initialization.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes

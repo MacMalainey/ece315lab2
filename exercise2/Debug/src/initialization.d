@@ -1,14 +1,10 @@
-src/exercise2.o src/exercise2.o: ../src/exercise2.c \
- ../../lab2_bsp/ps7_cortexa9_0/include/xil_printf.h \
+src/initialization.o src/initialization.o: ../src/initialization.c \
+ ../src/initialization.h ../../lab2_bsp/ps7_cortexa9_0/include/xil_io.h \
  ../../lab2_bsp/ps7_cortexa9_0/include/xil_types.h \
+ ../../lab2_bsp/ps7_cortexa9_0/include/xil_printf.h \
  ../../lab2_bsp/ps7_cortexa9_0/include/xparameters.h \
  ../../lab2_bsp/ps7_cortexa9_0/include/xparameters_ps.h \
  ../../lab2_bsp/ps7_cortexa9_0/include/bspconfig.h \
- ../../lab2_bsp/ps7_cortexa9_0/include/xparameters.h \
- ../../lab2_bsp/ps7_cortexa9_0/include/xil_types.h \
- ../../lab2_bsp/ps7_cortexa9_0/include/xtime_l.h ../src/uart_driver.h \
- ../../lab2_bsp/ps7_cortexa9_0/include/xil_io.h \
- ../../lab2_bsp/ps7_cortexa9_0/include/xil_printf.h \
  ../../lab2_bsp/ps7_cortexa9_0/include/xpseudo_asm.h \
  ../../lab2_bsp/ps7_cortexa9_0/include/xreg_cortexa9.h \
  ../../lab2_bsp/ps7_cortexa9_0/include/xpseudo_asm_gcc.h \
@@ -33,29 +29,21 @@ src/exercise2.o src/exercise2.o: ../src/exercise2.c \
  ../../lab2_bsp/ps7_cortexa9_0/include/queue.h \
  ../../lab2_bsp/ps7_cortexa9_0/include/task.h \
  ../../lab2_bsp/ps7_cortexa9_0/include/semphr.h \
- ../../lab2_bsp/ps7_cortexa9_0/include/queue.h ../src/initialization.h
+ ../../lab2_bsp/ps7_cortexa9_0/include/queue.h
 
-../../lab2_bsp/ps7_cortexa9_0/include/xil_printf.h:
+../src/initialization.h:
+
+../../lab2_bsp/ps7_cortexa9_0/include/xil_io.h:
 
 ../../lab2_bsp/ps7_cortexa9_0/include/xil_types.h:
+
+../../lab2_bsp/ps7_cortexa9_0/include/xil_printf.h:
 
 ../../lab2_bsp/ps7_cortexa9_0/include/xparameters.h:
 
 ../../lab2_bsp/ps7_cortexa9_0/include/xparameters_ps.h:
 
 ../../lab2_bsp/ps7_cortexa9_0/include/bspconfig.h:
-
-../../lab2_bsp/ps7_cortexa9_0/include/xparameters.h:
-
-../../lab2_bsp/ps7_cortexa9_0/include/xil_types.h:
-
-../../lab2_bsp/ps7_cortexa9_0/include/xtime_l.h:
-
-../src/uart_driver.h:
-
-../../lab2_bsp/ps7_cortexa9_0/include/xil_io.h:
-
-../../lab2_bsp/ps7_cortexa9_0/include/xil_printf.h:
 
 ../../lab2_bsp/ps7_cortexa9_0/include/xpseudo_asm.h:
 
@@ -106,5 +94,3 @@ src/exercise2.o src/exercise2.o: ../src/exercise2.c \
 ../../lab2_bsp/ps7_cortexa9_0/include/semphr.h:
 
 ../../lab2_bsp/ps7_cortexa9_0/include/queue.h:
-
-../src/initialization.h:
