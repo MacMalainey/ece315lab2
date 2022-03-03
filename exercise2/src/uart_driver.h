@@ -118,9 +118,7 @@ BaseType_t MyIsReceiveData( void ){
 
 	/*******************************************************/
 	//write the code to return pdTRUE if there is newly received data into the receive queue else return pdFALSE.
-	taskENTER_CRITICAL();
-	BaseType_t isReceiveData = uxQueueMessagesWaitingFromISR( xQueue_for_receive ) > 0;
-	taskEXIT_CRITICAL();
+	BaseType_t isReceiveData = uxQueueMessagesWaiting( xQueue_for_receive ) > 0;
 	return isReceiveData;
 	/*******************************************************/
 }
@@ -143,7 +141,7 @@ BaseType_t MyIsTransmitFull( void ) {
 
 	/*******************************************************/
 	//write the code to return pdTRUE if the transmit queue data structure is FULL else return pdFALSE.
-	return xQueueIsQueueFullFromISR( xQueue_for_transmit );
+	return uxQueueSpacesAvailable( xQueue_for_transmit ) == 0;
 	/*******************************************************/
 
 }

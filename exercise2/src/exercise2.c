@@ -168,6 +168,8 @@ void Task_UART_buffer_receive(void *p){
 					CountRxIrq = 0;
 					CountTxIrq = 0;
 					printString("Byte Counter, CountRxIrq && CountTxIrq set to zero\n\n");
+				} else {
+					restartFlag = 0;
 				}
 				
 				/*******************************************************/
