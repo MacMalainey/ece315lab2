@@ -117,7 +117,9 @@ void Task_UART_buffer_receive(void *p){
 				//add three lines of code here to check MyIsReceiveData() status, get the data byte using the MyReceiveByte(),
 				//check the status of MyIsTransmitFull() function.
 				//the return value of the MyReceiveByte() function must be stored inside the "pcString" variable.
-
+				while((MyIsReceiveData() == pdFalse) || (MyIsTransmitFull() == pdTrue)) {
+					pcString = MyReceiveByte();
+				}
 				/*******************************************************/
 
 				write_to_queue_value = (char) pcString;	//casted to "char" type.
@@ -126,13 +128,14 @@ void Task_UART_buffer_receive(void *p){
 				//write the code to change the capitalization from lower to upper case and vice versa for the byte present inside the
 				//"write_to_queue_value" variable.
 				//store the changed byte to "write_to_queue_value" itself.
-
-			
+				if ((write_to_queue_value | 0x20) >= 'a' && (write_to_queue_value & 0x20) <= 'z'){ // the bitwise or makes any letter lower case
+					write_to_queue_value = write_to_queue_value ^ 0x20; // use xor to toggle bit five which changes the case
+				}
 				/*******************************************************/
 
 				/*******************************************************/
 				//write one line of code to increment the variable used as a byte counter for UART characters
-				
+				Countbytes++;
 				/*******************************************************/
 
 				MySendByte(write_to_queue_value);
@@ -155,7 +158,17 @@ void Task_UART_buffer_receive(void *p){
 				//Also, print this message on the console: "Byte Counter, CountRxIrq && CountTxIrq set to zero\n\n"
 				//the counter variables have been already given to you.
 				//note that the received character byte is stored inside "write_to_queue_value" variable.
-
+				if (restartFlag == 0 && write_to_queue_value == CHAR_CARRIAGE_RETURN) {
+					restartFlag = 1;
+				} else if (restartFlag == 1 && write_to_queue_value == '%') {
+					restartFlag = 2;
+				} else if (restartFlag == 2 && write_to_queue_value == CHAR_CARRIAGE_RETURN) {
+					restartFlag = 0;
+					Countbytes = 0;
+					CountRxIrq = 0;
+					CountTxIrq = 0;
+					printString("Byte Counter, CountRxIrq && CountTxIrq set to zero\n\n");
+				}
 				
 				/*******************************************************/
 			}
